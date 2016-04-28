@@ -1,0 +1,259 @@
+---
+swagger: "2.0"
+info:
+  version: "0.0.0"
+  title: "procitor"
+paths:
+  /host:
+    get:
+      summary: "Get a single host by IP address"
+      description: "Get a single host by IP address"
+      operationId: "hostGET"
+      parameters:
+      - name: "IP Address"
+        in: "query"
+        description: "The IP of the host"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Host"
+      x-swagger-router-controller: "Default"
+    post:
+      summary: "Set a single host by IP address"
+      description: "Set a single host by IP address"
+      operationId: "hostPOST"
+      parameters:
+      - in: "body"
+        name: "host"
+        required: true
+        schema:
+          $ref: "#/definitions/Host"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Host"
+      x-swagger-router-controller: "Default"
+    put:
+      summary: "Create a new host"
+      description: "Create a new host"
+      operationId: "hostPUT"
+      parameters:
+      - in: "body"
+        name: "Proc"
+        description: "Proc to create"
+        required: false
+        schema:
+          $ref: "#/definitions/Host"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Host"
+      x-swagger-router-controller: "Default"
+    delete:
+      summary: "Delete a host object"
+      description: "Delete a host object"
+      operationId: "hostDELETE"
+      parameters:
+      - name: "IP"
+        in: "query"
+        description: "IP of the host"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Host"
+      x-swagger-router-controller: "Default"
+  /host/all:
+    get:
+      description: "Gets `Host` objects.\nOptional query param of **id** determines\n\
+        size of returned array\n"
+      operationId: "hostAllGET"
+      parameters:
+      - name: "name"
+        in: "query"
+        description: "Name of a host"
+        required: false
+        type: "string"
+        format: "string"
+      - name: "IP"
+        in: "query"
+        description: "IP of a host"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "array"
+            title: "Hosts"
+            items:
+              title: "Proc"
+              $ref: "#/definitions/Host"
+      x-swagger-router-controller: "Default"
+  /proc:
+    get:
+      summary: "get a single proc by PID"
+      description: "get a single proc by PID"
+      operationId: "procGET"
+      parameters:
+      - name: "PID"
+        in: "query"
+        description: "Process ID"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "Get the process by PID"
+          schema:
+            $ref: "#/definitions/Proc"
+      x-swagger-router-controller: "Default"
+    post:
+      summary: "set a single proc by PID"
+      description: "set a single proc by PID"
+      operationId: "procPOST"
+      parameters:
+      - name: "PID"
+        in: "query"
+        description: "Process ID"
+        required: true
+        type: "integer"
+      - in: "body"
+        name: "Proc"
+        description: "name of the process"
+        required: true
+        schema:
+          $ref: "#/definitions/Proc"
+      responses:
+        200:
+          description: "Succesful response"
+          schema:
+            $ref: "#/definitions/Proc"
+      x-swagger-router-controller: "Default"
+    put:
+      summary: "Create a single proc object"
+      description: "Create a single proc object"
+      operationId: "procPUT"
+      parameters:
+      - in: "body"
+        name: "Proc"
+        description: "Proc to create"
+        required: false
+        schema:
+          $ref: "#/definitions/Proc"
+      responses:
+        201:
+          description: "Created"
+          schema:
+            $ref: "#/definitions/Proc"
+      x-swagger-router-controller: "Default"
+    delete:
+      summary: "Delete a Proc object, send a kill signal to the process."
+      description: "Delete a Proc object, send a kill signal to the process."
+      operationId: "procDELETE"
+      parameters:
+      - name: "PID"
+        in: "query"
+        description: "PID of the process"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Proc"
+      x-swagger-router-controller: "Default"
+  /proc/all:
+    get:
+      description: "Gets `Proc` objects.\nOptional query param of **id** determines\n\
+        size of returned array\n"
+      operationId: "procAllGET"
+      parameters:
+      - name: "name"
+        in: "query"
+        description: "Name of a process"
+        required: false
+        type: "string"
+        format: "string"
+      - name: "PID"
+        in: "query"
+        description: "Process ID"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "array"
+            title: "ArrayOfPersons"
+            items:
+              $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "Default"
+  /proc/updatePrecentage:
+    post:
+      summary: "set a single proc by PID"
+      description: "set a single proc by PID"
+      operationId: "procUpdatePrecentagePOST"
+      parameters:
+      - name: "PID"
+        in: "query"
+        description: "Process ID"
+        required: true
+        type: "integer"
+      - in: "body"
+        name: "name"
+        description: "name of the process"
+        required: true
+        schema:
+          type: "string"
+          title: "name"
+      responses:
+        200:
+          description: "Succesful response"
+          schema:
+            $ref: "#/definitions/Proc"
+      x-swagger-router-controller: "Default"
+definitions:
+  Host:
+    type: "object"
+    required:
+    - "IP"
+    properties:
+      name:
+        type: "string"
+      IP:
+        type: "string"
+        format: "IP"
+      Procs:
+        $ref: "#/definitions/Proc"
+  Stat:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      value:
+        type: "integer"
+  Proc:
+    type: "object"
+    required:
+    - "id"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      stats:
+        $ref: "#/definitions/Stat"
+  inline_response_200:
+    properties:
+      name:
+        type: "string"
+      id:
+        type: "integer"
