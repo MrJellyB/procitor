@@ -12,14 +12,14 @@ exports.hostAllGET = function(args, res, next) {
   examples['application/json'] = [ {
   "Procs" : {
     "stats" : {
-      "name" : "aeiou",
-      "value" : ""
+      "name" : "CPU",
+      "value" : 20
     },
-    "name" : "aeiou",
-    "id" : 123456789
+    "name" : "MyProcess",
+    "id" : 1
   },
-  "IP" : "aeiou",
-  "name" : "aeiou"
+  "IP" : "1.1.1.1",
+  "name" : "MyHost"
 } ];
   
   if(Object.keys(examples).length > 0) {
@@ -44,14 +44,14 @@ exports.hostDELETE = function(args, res, next) {
   examples['application/json'] = {
   "Procs" : {
     "stats" : {
-      "name" : "aeiou",
-      "value" : ""
+      "name" : "CPU",
+      "value" : 20
     },
-    "name" : "aeiou",
-    "id" : 123456789
+    "name" : "MyProcess",
+    "id" : 1
   },
-  "IP" : "aeiou",
-  "name" : "aeiou"
+  "IP" : "1.1.1.1",
+  "name" : "MyHost"
 };
   
   if(Object.keys(examples).length > 0) {
@@ -76,14 +76,14 @@ exports.hostGET = function(args, res, next) {
   examples['application/json'] = {
   "Procs" : {
     "stats" : {
-      "name" : "aeiou",
-      "value" : ""
+      "name" : "CPU",
+      "value" : 20
     },
-    "name" : "aeiou",
-    "id" : 123456789
+    "name" : "MyProcess",
+    "id" : 1
   },
-  "IP" : "aeiou",
-  "name" : "aeiou"
+  "IP" : "1.1.1.1",
+  "name" : "MyHost"
 };
   
   if(Object.keys(examples).length > 0) {
@@ -108,14 +108,14 @@ exports.hostPOST = function(args, res, next) {
   examples['application/json'] = {
   "Procs" : {
     "stats" : {
-      "name" : "aeiou",
-      "value" : ""
+      "name" : "CPU",
+      "value" : 20
     },
-    "name" : "aeiou",
-    "id" : 123456789
+    "name" : "MyProcess",
+    "id" : 1
   },
-  "IP" : "aeiou",
-  "name" : "aeiou"
+  "IP" : "1.1.1.1",
+  "name" : "MyHost"
 };
   
   if(Object.keys(examples).length > 0) {
@@ -140,14 +140,14 @@ exports.hostPUT = function(args, res, next) {
   examples['application/json'] = {
   "Procs" : {
     "stats" : {
-      "name" : "aeiou",
-      "value" : ""
+      "name" : "CPU",
+      "value" : 20
     },
-    "name" : "aeiou",
-    "id" : 123456789
+    "name" : "MyProcess",
+    "id" : 1
   },
-  "IP" : "aeiou",
-  "name" : "aeiou"
+  "IP" : "1.1.1.1",
+  "name" : "MyHost"
 };
   
   if(Object.keys(examples).length > 0) {
@@ -171,9 +171,13 @@ exports.procAllGET = function(args, res, next) {
   
   var examples = {};
   examples['application/json'] = [ {
-  "name" : "aeiou",
-  "id" : ""
-} ];
+    "stats" : {
+      "name" : "CPU",
+      "value" : 20
+    },
+    "name" : "MyProcess",
+    "id" : 1
+  } ];
   
   if(Object.keys(examples).length > 0) {
     res.setHeader('Content-Type', 'application/json');
@@ -195,13 +199,13 @@ exports.procDELETE = function(args, res, next) {
   
   var examples = {};
   examples['application/json'] = {
-  "stats" : {
-    "name" : "aeiou",
-    "value" : ""
-  },
-  "name" : "aeiou",
-  "id" : 123456789
-};
+    "stats" : {
+      "name" : "CPU",
+      "value" : 20
+    },
+    "name" : "MyProcess",
+    "id" : 1
+  };
   
   if(Object.keys(examples).length > 0) {
     res.setHeader('Content-Type', 'application/json');
@@ -223,13 +227,13 @@ exports.procGET = function(args, res, next) {
   
   var examples = {};
   examples['application/json'] = {
-  "stats" : {
-    "name" : "aeiou",
-    "value" : ""
-  },
-  "name" : "aeiou",
-  "id" : 123456789
-};
+    "stats" : {
+      "name" : "CPU",
+      "value" : 20
+    },
+    "name" : "MyProcess",
+    "id" : 1
+  };
   
   if(Object.keys(examples).length > 0) {
     res.setHeader('Content-Type', 'application/json');
@@ -252,13 +256,13 @@ exports.procPOST = function(args, res, next) {
   
   var examples = {};
   examples['application/json'] = {
-  "stats" : {
-    "name" : "aeiou",
-    "value" : ""
-  },
-  "name" : "aeiou",
-  "id" : 123456789
-};
+    "stats" : {
+      "name" : "CPU",
+      "value" : 20
+    },
+    "name" : "MyProcess",
+    "id" : 1
+  };
   
   if(Object.keys(examples).length > 0) {
     res.setHeader('Content-Type', 'application/json');
@@ -280,13 +284,13 @@ exports.procPUT = function(args, res, next) {
   
   var examples = {};
   examples['application/json'] = {
-  "stats" : {
-    "name" : "aeiou",
-    "value" : ""
-  },
-  "name" : "aeiou",
-  "id" : 123456789
-};
+    "stats" : {
+      "name" : "CPU",
+      "value" : 20
+    },
+    "name" : "MyProcess",
+    "id" : 1
+  };
   
   if(Object.keys(examples).length > 0) {
     res.setHeader('Content-Type', 'application/json');
@@ -309,13 +313,13 @@ exports.procUpdatePrecentagePOST = function(args, res, next) {
   
   var examples = {};
   examples['application/json'] = {
-  "stats" : {
-    "name" : "aeiou",
-    "value" : ""
-  },
-  "name" : "aeiou",
-  "id" : 123456789
-};
+    "stats" : {
+      "name" : "CPU",
+      "value" : 20
+    },
+    "name" : "MyProcess",
+    "id" : 1
+  };
   
   if(Object.keys(examples).length > 0) {
     res.setHeader('Content-Type', 'application/json');

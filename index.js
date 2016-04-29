@@ -5,6 +5,7 @@ var http = require('http');
 var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
 var fs = require('fs');
+var serveStatic = require('serve-static');
 var serverPort = 8080;
 
 // swaggerRouter configuration
@@ -31,6 +32,8 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 
   // Serve the Swagger documents and Swagger UI
   app.use(middleware.swaggerUi());
+
+  app.use(serveStatic(__dirname + '/public'));
 
   // Start the server
   http.createServer(app).listen(serverPort, function () {

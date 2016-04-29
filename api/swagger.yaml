@@ -251,6 +251,12 @@ definitions:
         type: "string"
       stats:
         $ref: "#/definitions/Stat"
+    example:
+      id: 1
+      name: "MyProcess"
+      stats:
+      - name: "CPU"
+        value: 2
   inline_response_200:
     properties:
       name:
